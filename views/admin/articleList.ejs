@@ -1,0 +1,67 @@
+<% include ./common/header.ejs %> 
+<% include ./common/sidebar.ejs %> 
+<div class="main">
+	<div class="main-content">
+		<div class="container-fluid">
+            <h3 class="page-title">文章列表</h3>
+				<div class="panel">
+				<div class="panel-title">
+					 <a href="addArticle" type="button" class="btn btn-primary add-btn">添加文章</a> 
+				</div>
+				<div class="panel-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>排序</th>
+								<th>id</th>
+								<th>标题</th>
+								<th>来源</th>
+								<th>栏目</th>
+								<th>状态</th>
+								<th>创建时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% artcileList.forEach(function(item){ %>
+								<tr>
+									<td><input type="text" value="0" class="form-control w80" ></td>
+									<td><%= item.article_id %></td>
+									<td><%= item.title %></td>
+									<td><%= item.copyfrom %></td>
+									<td><%= item.type_id ==1? '科技': '其他' %></td>
+									<td><%= item.status ==1 ? '正常':'下线' %></td>
+									<td><%= item.createtime %></td>
+									<td> 
+										<a href ="" uuid="<%= item.uuid %>"  class="del">删除</a> 
+									</td>
+								</tr>
+							<% }) %>
+						</tbody>
+					</table>
+					<a href="" type="button" class="btn btn-primary add-btn">更新排序</a> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% include ./common/footer.ejs %>
+<script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(function(){
+       var $btn =  $(".del");
+       $btn.click(function(){
+            $.ajax({
+                url:'/admin/delArticle',
+                data:{ uuid:$(this).attr('uuid') },
+                type:'get',
+                cache:false,
+                dataType:"json",
+                success:function(data){
+                    alert(data.message)
+                }
+            })
+			return false;
+       })
+    })
+</script>

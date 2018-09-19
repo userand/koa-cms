@@ -1,0 +1,22 @@
+.panel-title{
+    padding-top: 20px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.add-btn{
+    color: #fff !important;
+}
+
+.panel-pt{
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+}
+
+.w600{
+    width: 600px !important;
+}
+
+.w80{
+    width: 80px;
+}
