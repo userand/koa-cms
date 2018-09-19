@@ -1,4 +1,4 @@
-const koa = require('koa')
+const koa = require('koa');
 const path = require('path')
 const ejs = require('ejs')
 const staticCache = require('koa-static-cache')
@@ -16,9 +16,9 @@ const CONFIG = {
     signed: true, // 会自动给cookie加上一个sha256的签名,从而防止cookie被篡改
     rolling: false, // 每次都更新session
     renew: true // 且有效期已经过了一半，需要更新session
-  }
+}
 
-app.use(session(CONFIG, app)); 
+app.use(session(CONFIG, app));
 
 //前台路由
 const homeRoute = require( './routers/home').routes()
